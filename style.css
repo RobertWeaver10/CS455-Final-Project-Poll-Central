@@ -1,0 +1,145 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+}
+
+.headerTemplate {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 10%;
+  background-color: darkblue;
+}
+
+#pageName {
+  background-color: darkblue;
+  color: white;
+}
+.navtop-links {
+  list-style: none;
+}
+
+.navtop-links li {
+  display: inline-block;
+  padding: 0px 20px;
+  background-color: darkblue;
+}
+
+.navtop-links li a {
+  transition: all 0.3s ease 0s;
+  background-color: darkblue;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.navtop-links li a:hover {
+  color: lightseagreen;
+}
+.groups {
+  border-collapse: collapse;
+  margin: 40px 0;
+  margin-left: 40px;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width:85%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  align-self: center;
+
+}
+
+.groups thead tr {
+  background-color: #009879;
+  color: #009879;
+  text-align: left;
+}
+
+.groups th {
+  color: black;
+  text-align: left;
+  padding-left: 15px;
+}
+.groups td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.groups tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.groups tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.groups tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+.homeTitle {
+  color: black;
+  text-align: center;
+}
+
+.HomeDiv {
+  text-align: center;
+}
+
+
+.ElectionNameInput {
+
+}
+
+.electionName {
+  text-align: center;
+  padding-left: 300px;
+}
+
+.createVoteLabels {
+  padding-left: 30px;
+  font-size:larger;
+}
+
+.createVoteButtons{
+  font-size: large;
+  padding: 5px;
+}
+
+.createGroupForm label {
+  font-size: larger;
+  padding-left: 30px;
+}
+.createGroupForm input {
+  font-size: larger;
+}
+.CGSubmit {
+  font-size: larger;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.loginForm {
+  font-size: larger;
+}
+
+
+.LSubmit {
+  padding: 5px;
+  font-size: large;
+}
+
+.userTitle {
+  padding: 10px;
+  padding-left: 5%;
+  font-size: 21pt;
+}
+
+.users {
+  padding-left: 7%;
+  font-size: 14pt;
+}

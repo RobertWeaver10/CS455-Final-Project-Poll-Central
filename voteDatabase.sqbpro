@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/bebay/Documents/School/CS455/Class Project/DatabaseProject/pollingApp/DB/voteDatabase.db" readonly="0" foreign_keys="" case_sensitive_like="" temp_store="" wal_autocheckpoint="" synchronous=""/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="250"/><column_width id="3" width="6126"/><column_width id="4" width="0"/></tab_structure><tab_browse><current_table name="0,0:"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="SQL 1">-- Turn on foreign keys
+PRAGMA foreign_keys = ON;
+
+-- Delete the tables if they already exist
+drop table if exists Vote;
+drop table if exists User;
+drop table if exists Candidate;
+drop table if exists Election;
+drop table if exists Groups;
+
+CREATE TABLE Vote(
+	UserID INTEGER,
+	EID INTEGER,
+	CandID INTEGER,
+	Choice TEXT,
+	PRIMARY KEY (UserID, EID, Choice),
+	FOREIGN KEY (UserID) REFERENCES User(UserID)
+		ON UPDATE CASCADE
+		ON DELETE CASCADE
+	FOREIGN KEY (EID) REFERENCES Election(EID)
+		ON UPDATE CASCADE
+		ON DELETE CASCADE
+	FOREIGN KEY (CandID) REFERENCES Candidate(CandID)
+		ON UPDATE CASCADE
+		ON DELETE CASCADE
+);
+
+CREATE TABLE User(
+	UserID INTEGER unique,
+	Name TEXT,
+	Password TEXT,
+	GID INTEGER,
+	PRIMARY KEY (UserID),
+	FOREIGN KEY (GID) REFERENCES Groups(GID)
+		ON UPDATE CASCADE
+		ON DELETE CASCADE
+);
+
+CREATE TABLE Candidate(
+	CandID INTEGER unique,
+	CandName TEXT,
+	VoteCount INTEGER,
+	PRIMARY KEY (CandID)
+);
+
+CREATE TABLE Election(
+	EID INTEGER unique,
+	Ename TEXT,
+	GID INTEGER,
+	Type TEXT,
+	PRIMARY KEY (EID),
+	FOREIGN KEY (GID) REFERENCES Groups(GID)
+		ON UPDATE CASCADE
+		ON DELETE CASCADE
+);
+
+CREATE TABLE Groups(
+	Gname TEXT,
+	GID INTEGER unique,
+	Gpassword TEXT,
+	PRIMARY KEY (GID)
+);</sql><current_tab id="0"/></tab_sql></sqlb_project>

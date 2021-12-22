@@ -1,0 +1,66 @@
+-- Turn on foreign keys
+PRAGMA foreign_keys = ON;
+
+-- Delete the tables if they already exist
+drop table if exists Vote;
+drop table if exists User;
+drop table if exists Candidate;
+drop table if exists Election;
+drop table if exists Groups;
+
+CREATE TABLE Vote(
+	UserID INTEGER,
+	EID INTEGER,
+	CandID INTEGER,
+	Choice INTEGER,
+	PRIMARY KEY (UserID, EID, Choice),
+	FOREIGN KEY (UserID) REFERENCES User(UserID)
+		ON UPDATE CASCADE
+		ON DELETE CASCADE
+	FOREIGN KEY (EID) REFERENCES Election(EID)
+		ON UPDATE CASCADE
+		ON DELETE CASCADE
+	FOREIGN KEY (CandID) REFERENCES Candidate(CandID)
+		ON UPDATE CASCADE
+		ON DELETE CASCADE
+);
+
+CREATE TABLE User(
+	UserID INTEGER unique,
+	Name TEXT,
+	Password TEXT,
+	GID INTEGER,
+	PRIMARY KEY (UserID),
+	FOREIGN KEY (GID) REFERENCES Groups(GID)
+		ON UPDATE CASCADE
+		ON DELETE CASCADE
+);
+
+CREATE TABLE Candidate(
+	CandID INTEGER unique,
+	CandName TEXT,
+	EID INTEGER,
+	PRIMARY KEY (CandID),
+	FOREIGN KEY (EID) REFERENCES Election(EID)
+		ON UPDATE CASCADE
+		ON DELETE CASCADE
+);
+
+CREATE TABLE Election(
+	Ongoing INTEGER,
+	EID INTEGER unique,
+	Ename TEXT,
+	GID INTEGER,
+	Type TEXT,
+	PRIMARY KEY (EID),
+	FOREIGN KEY (GID) REFERENCES Groups(GID)
+		ON UPDATE CASCADE
+		ON DELETE CASCADE
+);
+
+CREATE TABLE Groups(
+	Gname TEXT,
+	GID INTEGER unique,
+	Gpassword TEXT,
+	PRIMARY KEY (GID)
+);
